@@ -1,0 +1,63 @@
+package Fan;
+
+public class Fan {
+    public static void main(String[] args) {
+        Fan FirstFan = new Fan();
+        FirstFan.setSpeed(3);
+        FirstFan.setRadius(10);
+        FirstFan.setColor("yellow");
+        FirstFan.setOn(true);
+        System.out.println("第一个风扇的状态: " );
+        FirstFan.tostring();
+        Fan SecondFan = new Fan();
+        SecondFan.setSpeed(2);
+        SecondFan.setRadius(5);
+        SecondFan.setColor("blue");
+        SecondFan.setOn(false);
+        System.out.println("第二个风扇的状态: ");
+        SecondFan.tostring();
+    }
+}
+class Fan{
+    final static int SLOW = 1;
+    final static int MEDIUM = 2;
+    final static int FAST = 3;
+    private int speed = SLOW;
+    private boolean on = false;
+    private double radius = 5;
+    String color = "blue";
+    int getSpeed(){
+        return speed;
+    }
+    boolean getOn(){
+        return on;
+    }
+    double getRadius(){
+        return radius;
+    }
+    String getColor(){
+        return color;
+    }
+    void setSpeed(int newSpeed){
+        speed = newSpeed;
+    }
+    void setOn(boolean newOn){
+        on = newOn;
+    }
+    void setRadius(double newRadius){
+        radius = newRadius;
+    }
+    void setColor(String newColor){
+        color = newColor;
+    }
+    Fan(){
+    }
+    void tostring(){
+        if(getOn())
+            System.out.println("风扇的速度： " + getSpeed() + " 风扇的颜色：" +
+                    getColor() + " 风扇的半径： " + getRadius() );
+        else
+            System.out.println("fan is off \n" + "风扇的颜色： " + getColor()
+                    + " 风扇的半径： " + getRadius());   
+    }
+}
