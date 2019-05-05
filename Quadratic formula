@@ -1,0 +1,64 @@
+public class QuadraticEquationtest 
+{
+    public static void main(String[] args) 
+    {
+        Quadraticequation equation1=new Quadraticequation(1.0,3,1);
+        Quadraticequation.ret(equation1);
+        Quadraticequation equation2=new Quadraticequation(1,2.0,1);
+        Quadraticequation.ret(equation2);
+        Quadraticequation equation3=new Quadraticequation(1,2,3);  
+        Quadraticequation.ret(equation3);
+    } 
+}
+class Quadraticequation
+{
+    private double a;
+    private double b;
+    private double c;
+    public Quadraticequation(double x,double y,double z)
+    {
+        a=x;
+        b=y;
+        c=z;
+    }
+    public double getA()
+    {
+        return a;
+    }
+    public double getB()
+    {
+        return b;
+    }
+    public double getC()
+    {
+        return c;
+    }
+    public double getDiscriminant()
+    {
+        return b*b-4*a*c;
+    } 
+    public double getRoot1()
+    {
+        return (-b+Math.sqrt(getDiscriminant()))/(2*a);
+    }
+    public double getRoot2()
+    {
+        return (-b-Math.sqrt(getDiscriminant()))/(2*a);
+    }
+    public static void ret(Quadraticequation equation)
+    {
+        double ret1=equation.getDiscriminant();
+        if(ret1>0)
+        {
+            System.out.println("The equation has two roots "+equation.getRoot1()+" and "+equation.getRoot2());
+        }
+        else if(ret1==0)
+        {
+            System.out.println("The equation has one roots "+equation.getRoot1());
+        }
+        else
+        {
+            System.out.println("The equation has no real roots");
+        }
+    }
+}
