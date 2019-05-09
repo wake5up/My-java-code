@@ -1,0 +1,83 @@
+import java.util.Date;
+
+public class TestNewaccount 
+{
+    public static void main(String[] args) 
+    {
+        
+    }
+}
+class Account 
+{
+    private int id;
+    private double balance;
+    private double annualInterestRate;
+    private Date dateCreated;
+    public Account()
+    {
+        dateCreated=new Date();
+    }
+    public Account(int x,double y)
+    {
+        id=x;
+        balance=y;
+        dateCreated=new Date();
+    }
+    public void setId(int x)
+    {
+        id=x;
+    }
+    public int getId()
+    {
+        return id;
+    }
+    public void setBalance(double x)
+    {
+        balance=x;
+    }
+    public double getBalance()
+    {
+        return balance;
+    }
+    public void setAnnualInterestRate(double x)
+    {
+        annualInterestRate=x;
+    }
+    public double getAnnualInterestRate()
+    {
+        return annualInterestRate;
+    }
+    public Date getDateCreated()
+    {
+        return dateCreated;
+    }
+    public double getMonthlyInterestRate()
+    {
+        return annualInterestRate/12;
+    }
+    public double getMonthlyInterest()
+    {
+        return getMonthlyInterestRate()*balance;
+    }
+    public void withDraw(double money)
+    {
+        if(balance>=money)
+        balance-=money;
+    }
+    public void deposit(double money)
+    {
+        balance+=money;
+    }
+}
+class NewAccount extends Account
+{
+    String name;
+    public NewAccount(String name,int id,double money)
+    {
+        this.name=name;
+        setId(id);
+        withDraw(money);
+        deposit(money);
+    }
+    
+}
