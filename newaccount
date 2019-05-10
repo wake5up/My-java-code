@@ -1,17 +1,30 @@
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 public class TestNewaccount 
 {
     public static void main(String[] args) 
     {
-        
+        NewAccount account = new NewAccount("Mike",1122,1000);
+        account.setAnnualInterestRate(1.5/100);
+        account.deposit(30);
+        account.deposit(40);
+        account.deposit(50);
+        account.withDraw(5);
+        account.withDraw(4);
+        account.withDraw(2);
+        for(int i=0;i<account.transaction.size();i++)
+        {
+            System.out.println(account.transaction.get(i));
+        }
     }
 }
 class Account 
 {
-    private int id;
-    private double balance;
-    private double annualInterestRate;
+    private int id=0;
+    private double balance=0;
+    static private double annualInterestRate=0;
     private Date dateCreated;
     public Account()
     {
@@ -69,15 +82,46 @@ class Account
         balance+=money;
     }
 }
+class Transaction
+{
+    private char type;
+    private Date date;
+    private double money;
+    private double balance;
+    private String description;
+    public Transaction(char type,double money,double balance,String description)
+    {
+        this.type=type;
+        date=new Date();
+        this.money=money;
+        this.balance=balance;
+        this.description=description;
+    }
+    public String toString()
+    {
+        return "Type:"+type+"  Money:"+money+"  Balance:"+balance+"  Date:"+date+" "+description;
+    }
+}
 class NewAccount extends Account
 {
-    String name;
-    public NewAccount(String name,int id,double money)
+    private String name;
+    ArrayList transaction=new ArrayList();
+    public NewAccount(String name,int id,double balance)
     {
+        super(id,balance);
         this.name=name;
-        setId(id);
-        withDraw(money);
-        deposit(money);
     }
-    
+    public void withDraw(double x)
+    {
+        if(getBalance()>x)
+        {
+            setBalance(getBalance()-x);
+            transaction.add(new Transaction('W',x,getBalance(),""));
+        }
+    }
+    public void deposit(double x)
+    {
+        setBalance(getBalance()+x);
+        transaction.add(new Transaction('D',x,getBalance(),""));
+    }
 }
