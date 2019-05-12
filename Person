@@ -1,0 +1,104 @@
+import java.util.Date;
+import java.util.Scanner;
+
+public class TestPerson 
+{
+    public static void main(String[] args) 
+    {
+        System.out.println("请输入一个教员的姓名，地址，电话号码，电子邮件地址，办公室，工资，受聘时间，办公时间，级别");
+        Scanner input=new Scanner(System.in);
+        String name=input.next();
+        String address=input.next();
+        String tel=input.next();
+        String email=input.next();
+        String office=input.next();
+        double salary=input.nextDouble();
+        int officeHours=input.nextInt();
+        String rank=input.next();
+        Faculty F=new Faculty(name,address,tel,email,office,salary,officeHours,rank);
+        System.out.print(F);
+    } 
+}
+class Person
+{
+    private String name,address,tel,email;
+    public Person()
+    {
+    }
+    public Person(String name,String add,String tel,String email)
+    {
+        this.name=name;
+        this.address=add;
+        this.tel=tel;
+        this.email=email;
+    }
+    public String toString()
+    {
+        return "name:"+name+" address:"+address+" tel:"+tel+" email:"+email;
+    }
+}
+class Student extends Person
+{
+    public static final int GRADE_ONE=1;
+    public static final int GTADE_TWO=2;
+    public static final int GTADE_THREE=3;
+    public static final int GTADE_FOUR=4;
+    private int grade;
+    public Student(String name,String add,String tel,String email,int grade)
+    {
+        super(name,add,tel,email);
+        this.grade=grade;
+    }
+    public String toString()
+    {
+        return super.toString()+" the grade："+grade;
+    }
+}
+class Employee extends Person
+{
+    private String office;
+    private double salary;
+    private Date employed_date;
+    public Employee()
+    {
+    }
+    public Employee(String name,String add,String tel,String email,String office,double salary)
+    {
+        super(name,add,tel,email);
+        this.office=office;
+        this.salary=salary;
+        this.employed_date=new Date();
+    }
+    public String toString()
+    {
+        return super.toString()+" office:"+office+" salary:"+salary+" employ_date:"+employed_date;
+    }
+}
+class Faculty extends Employee
+{
+    private int officeHours;
+    private String rank;
+    public Faculty(String name,String add,String tel,String email,String office,double salary,int officeHours,String rank)
+    {
+        super(name,add,tel,email,office,salary);
+        this.officeHours=officeHours;
+        this.rank=rank;
+    }
+    public String toString()
+    {
+        return super.toString()+" officeHours:"+officeHours+" rank:"+rank;
+    }
+}
+class Staff extends Employee
+{
+    private String position_title;
+    public Staff(String name,String add,String tel,String email,String office,double salary,String position_title)
+    {
+        super(name,add,tel,email,office,salary);
+        this.position_title=position_title;
+    }
+    public String toString()
+    {
+        return super.toString()+" position_title:"+position_title;
+    }
+}
