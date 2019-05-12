@@ -1,24 +1,68 @@
+import java.util.Scanner;
+
 public class Test 
 {
     public static void main(String[] args) 
     {
-        
+        System.out.println("请输入三角形的三条边，颜色,是否填充（true or false）");
+        Scanner input=new Scanner(System.in);
+        double side1=input.nextDouble();
+        double side2=input.nextDouble();
+        double side3=input.nextDouble();
+        String color=input.next();
+        boolean filled=input.nextBoolean();
+        Triangle tri=new Triangle(side1,side2,side3,color,filled);
+        System.out.println(tri);
+        System.out.println("Area:"+tri.getArea());
+        System.out.println("Perimeter:"+tri.getPerimeter());
+        System.out.println("Color:"+tri.getColor());
+        System.out.println("IsFilled:"+tri.getFilled());
     }  
 }
 class GeometricObject
 {
-    
+    private String color="white";
+    private boolean filled=false;
+    public GeometricObject()
+    {
+    }
+    public GeometricObject(String color,boolean filled)
+    {
+        this.color=color;
+        this.filled=filled;
+    }
+    public String getColor()
+    {
+        return color;
+    }
+    public boolean getFilled()
+    {
+        return filled;
+    }
+    public void setColor(String color)
+    {
+        this.color=color;
+    }
+    public void setFilled(boolean filled)
+    {
+        this.filled=filled;
+    }
+    public String toString()
+    {
+        return "Color:"+color+"Filled:"+filled;
+    }
 }
-class Triangle
+class Triangle extends GeometricObject
 {
-    double side1=1;
-    double side2=1;
-    double side3=1;
+    private double side1=1;
+    private double side2=1;
+    private double side3=1;
     public Triangle()
     {
     }
-    public Triangle(double a,double b,double c)
+    public Triangle(double a,double b,double c,String color,boolean filled)
     {
+        super(color,filled);
         if(a+b>c&&a+c>b&&b+c>a)
         {
             side1=a;
@@ -53,7 +97,6 @@ class Triangle
     }
     public String toString()
     {
-        return "Triangle:side1="+side1+"side2="+side2+"side3="+side3;
+        return "Triangle:side1="+side1+"  side2="+side2+"  side3="+side3;
     }
-    
 }
