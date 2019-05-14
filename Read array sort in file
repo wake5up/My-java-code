@@ -1,0 +1,32 @@
+package writearray;
+
+import java.util.*;
+
+public class WriteArray 
+{
+        public static void main(String[] args) throws Exception 
+        {
+        java.io.File file = new java.io.File("Exercise12_15.txt");
+        if(!file.exists())//判断文件是否存在
+        {
+            file.createNewFile();
+        }
+        try (java.io.PrintWriter output = new java.io.PrintWriter(file)) 
+        {
+            for(int i = 0;i<100;i++)
+            {
+                output.print((int)(Math.random()*100)+" ");//读入随机值    
+            }
+        }
+        int B[] = new int[100];
+        try (Scanner input = new Scanner(file)) //读取数据
+        {
+            for(int i = 0;i<100;i++)
+            {
+                B[i] = input.nextInt();
+            }
+            Arrays.sort(B);//排序
+            System.out.print(Arrays.toString(B));
+        }
+    }
+}
