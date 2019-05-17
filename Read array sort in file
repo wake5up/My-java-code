@@ -1,5 +1,4 @@
-package writearray;
-
+一。
 import java.util.*;
 
 public class WriteArray 
@@ -27,6 +26,54 @@ public class WriteArray
             }
             Arrays.sort(B);//排序
             System.out.print(Arrays.toString(B));
+        }
+    }
+}
+
+二。
+
+import java.io.*;
+import java.util.*;
+public class WriteArray
+{
+    public static void main(String[] args) throws Exception
+    {
+        System.out.println("请输入文件名");
+        Scanner fileName=new Scanner(System.in);
+        File file=new File(fileName.nextLine());
+
+        if(!file.exists())//判断文件是否存在
+        {
+            PrintWriter output=new PrintWriter(file);
+            Random r=new Random();
+            for(int i=0;i<100;i++)
+            {
+                output.print(r.nextInt(1000)+" ");
+            }
+            output.close();
+        }
+        else
+        {
+            Scanner input=new Scanner(file);
+            int[] arr =new int[100];
+            int i=0;
+            while (input.hasNext())//如果还有数据读取，返回true
+            {
+                arr[i++]=input.nextInt();
+            }
+            input.close();
+            Arrays.sort(arr);//升序排列
+            for(i=0;i<arr.length;i++)
+            {
+                if(i%10==9)//换行输出
+                {
+                    System.out.println(arr[i]);
+                }
+                else
+                {
+                    System.out.print(arr[i]+"\t");
+                }
+            }
         }
     }
 }
