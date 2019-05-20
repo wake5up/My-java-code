@@ -1,0 +1,119 @@
+import java.util.Scanner;
+
+interface Colorable
+{
+    public abstract void howToColor();
+}
+abstract class GeometricObject
+{
+    private String color;
+    private boolean filled;
+    private java.util.Date dateCreated;
+    protected GeometricObject()
+    {
+        dateCreated = new java.util.Date();
+    }
+    protected GeometricObject(String color, boolean filled)
+    {
+        this.color = color;
+        this.filled = filled;
+        dateCreated = new java.util.Date();
+    }
+    public String getColor()
+    {
+        return color;
+    }
+    public void setColor(String color)
+    {
+        this.color = color;
+    }
+    public java.util.Date getDateCreated()
+    {
+        return dateCreated;
+    }
+    public boolean isFilled()
+    {
+        return filled;
+    }
+    public void setFuilled(boolean filled)
+    {
+        this.filled = filled;
+    }
+    public String toString()
+    {
+        return "created on " + dateCreated + "\ncolor: " + color + "\nFilled " + filled;
+    }
+    public abstract double getArea();
+    public abstract double getPerimeter();
+}
+class Square 
+    extends GeometricObject implements Colorable
+{
+    private double width;
+    private double height;
+    public Square ()
+    {
+    }
+    public Square (double width, double height)
+    {
+        this(width, height, "white", false);
+    }
+    public Square(double width, double height, String color, boolean filled)
+    {
+        super(color, filled);
+        this.width = width;
+        this.height = height;
+    }
+    @Override
+    public double getArea()
+    {
+        return width * height;
+    }
+    @Override
+    public double getPerimeter()
+    {
+        return 2 * (width + height);
+    }
+    @Override
+    public void howToColor()
+    {
+        System.out.println("Color all four");
+    }
+    @Override
+    public String toString()
+    {
+        if (super.isFilled())
+        {
+            howToColor();
+        }
+
+        return super.toString();
+    }
+}
+public class TestSqare
+{
+    public static void main(String [] args)
+    {
+        Scanner input = new Scanner(System.in);
+        GeometricObject[] squares = new Square[5];
+
+        for (int i = 0; i < 5; i++)
+        {
+            System.out.println(i + " : Square ");
+            System.out.print("\tEnter width: ");
+            double width = input.nextDouble();
+            System.out.print("\tEnter height: ");
+            double height = input.nextDouble();
+            System.out.print("\tEnter Color: ");
+            String color = input.next();
+            System.out.print("\tIs Filled: ");
+            boolean filled = input.nextBoolean();
+            squares[i] = new Square(width, height, color, filled);
+        }
+        for (int i = 0; i < 5; i ++)
+        {
+            System.out.println(squares[i].toString());
+            System.out.println();
+        }
+    }
+}
