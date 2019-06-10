@@ -1,0 +1,89 @@
+package testmyinteger;
+import java.lang.*;
+class MyInteger{
+    private int value;
+    public MyInteger(int value){
+        this.value=value;
+    }
+    public int getValue(){
+        return value;
+    }
+    public boolean isEven(){
+        return (value%2==0)
+    }
+    public boolean isOdd(){
+        return (value%2==1)
+    }
+    public boolean isPrime(){
+        int j = 0;
+        for(int i=2;i<value/2;i++)
+        {
+            if(value%i!=0)
+                j++;
+        }
+        return (j==value/2-1);
+    }
+        public boolean isEven(int value){
+        return (value%2==0)
+    }
+    public boolean isOdd(int value){
+        return (value%2==1)
+    }
+    public boolean isPrime(int value){
+        int j = 0;
+        for(int i=2;i<value/2;i++)
+        {
+            if(value%i!=0)
+                j++;
+        }
+        return (j == value/2-1);
+    }
+        public boolean isEven(MyInteger a){
+        return (a.value%2==0);
+    }
+    public boolean isOdd(MyInteger a){
+        return (a.value%2==1)
+    }
+    public boolean isPrime(MyInteger a){
+        int j = 0;
+        for(int i=2;i<value/2;i++)
+        {
+            if(a.value%i!=0)
+                j++;
+        }
+        return (j == a.value/2-1);
+    }
+    public boolean equals(int value){
+        return (this.value==value)
+    }
+        public boolean equals(MyInteger a){
+        return (this.value==a.value);
+    }
+        public int parseInt(char []a){
+            String b=new String(a);
+            Integer c=Integer.valueOf(b);
+            return c;
+        }
+          public int parseInt(String a){
+            Integer c=Integer.valueOf(a);
+            return c;
+        }
+}
+public class TestMyInteger {
+    public static void main(String[] args) {
+        MyInteger a=new MyInteger(5);
+        System.out.println("偶数："+a.isEven());
+        System.out.println("奇数："+a.isOdd());
+        System.out.println("素数："+a.isPrime());
+        System.out.println("偶数："+a.isEven(4));
+        System.out.println("奇数："+a.isOdd(4));
+        System.out.println("素数："+a.isPrime(4));
+        System.out.println("偶数："+a.isEven(a));
+        System.out.println("奇数："+a.isOdd(a));
+        System.out.println("素数："+a.isPrime(a));
+        System.out.println("相等："+a.equals(4));
+        System.out.println("素数："+a.equals(a));
+        System.out.println("字符串转换为："+a.parseInt("666"));
+        System.out.println("字符串转换为："+a.parseInt("485584234"));
+    } 
+}
