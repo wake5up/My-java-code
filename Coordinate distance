@@ -1,0 +1,31 @@
+package testmypoint;
+class MyPoint{
+    private double x;
+    private double y;
+    public MyPoint()
+    {
+        x=0;
+        y=0;
+    }
+    public MyPoint(double x,double y)
+    {
+        this.x=x;
+        this.y=y;
+    }
+    public double distance(MyPoint m){
+        double a=Math.sqrt((this.x-m.x)*(this.x-m.x)+(this.y-m.y)*(this.y-m.y));
+        return a;
+    }
+    public double distance(double x,double y){
+        double a=Math.sqrt((this.x-x)*(this.x-x)+(this.y-y)*(this.y-y));
+        return a;
+    }
+}
+public class TestMyPoint {
+    public static void main(String[] args) {
+        MyPoint a1=new MyPoint();
+        MyPoint a2=new MyPoint(10,30.5);
+        System.out.printf("%.2f\n",a1.distance(a2));
+        System.out.printf("%.2f\n",a1.distance(10, 30.5));
+    } 
+}
