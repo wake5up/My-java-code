@@ -90,6 +90,7 @@ class Square
         return super.toString();
     }
 }
+
 public class TestSqare
 {
     public static void main(String [] args)
