@@ -116,5 +116,6 @@ public class TestSqare
             System.out.println(squares[i].toString());
             System.out.println();
         }
+
     }
 }
