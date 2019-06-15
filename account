@@ -70,6 +70,7 @@ class Account
         if(balance>=money)
         balance-=money;
     }
+
     public void deposit(double money)
     {
         balance+=money;
