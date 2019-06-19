@@ -1,0 +1,9 @@
+public class Area 
+{
+    public static void main(String[] args) 
+    {
+        Char ch=(char)(65+Math.random()*26);
+//Random rand =new Random();int i=rand.nextInt(101);
+                System.out.println(ch);
+    } 
+}
